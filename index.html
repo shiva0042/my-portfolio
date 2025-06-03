@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SHIVARAMAKRISHNAN D - Portfolio</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Custom CSS for Dark Mode and Red Gradient */
         body {
@@ -15,9 +15,81 @@
             scroll-behavior: smooth;
         }
 
+        /* Dark mode specific adjustments for the toggle, though the base is already dark */
+        body.light-mode { /* This class will be toggled by the dark mode button */
+            background-color: #f8f9fa; /* Lighter background for 'light' state */
+            color: #343a40; /* Darker text for 'light' state */
+        }
+        body.light-mode .navbar {
+            background-color: #0d6efd !important; /* Bootstrap primary blue */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        body.light-mode .navbar-brand {
+            color: white !important;
+        }
+        body.light-mode .nav-link {
+            color: white !important;
+        }
+        body.light-mode #hero {
+            background: linear-gradient(to bottom right, #0d6efd, #0b5ed7); /* Lighter gradient */
+        }
+        body.light-mode section h2 {
+            color: #0d6efd; /* Bootstrap primary blue */
+        }
+        body.light-mode .card {
+            background-color: white;
+            color: #343a40;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        body.light-mode .card-title {
+            color: #343a40;
+        }
+        body.light-mode .card-text, body.light-mode .modal-body p {
+            color: #495057;
+        }
+        body.light-mode .card-subtitle, body.light-mode .modal-category {
+            color: #0d6efd;
+        }
+        body.light-mode #skills .card, body.light-mode #experience .card {
+            background-color: #f1f3f5;
+            border: 1px solid #e9ecef;
+        }
+        body.light-mode #skills .card i, body.light-mode #experience .card i, body.light-mode #education .card i {
+            color: #0d6efd;
+        }
+        body.light-mode #contact {
+            background-color: #0d6efd;
+        }
+        body.light-mode #contact .contact-icon-group:hover {
+            color: #6c757d;
+        }
+        body.light-mode footer {
+            background-color: #343a40;
+        }
+        body.light-mode .modal-content {
+            background-color: white;
+            color: #343a40;
+        }
+        body.light-mode .modal-header .btn-close {
+            filter: none; /* Reset filter for light mode */
+            color: #343a40;
+        }
+        body.light-mode .modal-title {
+            color: #0d6efd;
+        }
+        body.light-mode .modal-body .btn-github {
+            background-color: #0d6efd;
+        }
+        body.light-mode .modal-body .btn-github:hover {
+            background-color: #0b5ed7;
+        }
+
+
         .navbar {
             background-color: #2d3748; /* gray-800 */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
 
         .navbar-brand {
@@ -440,22 +512,27 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#about"><i class="fas fa-user me-1"></i>About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
+                        <a class="nav-link" href="#skills"><i class="fas fa-cogs me-1"></i>Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                        <a class="nav-link" href="#projects"><i class="fas fa-lightbulb me-1"></i>Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
+                        <a class="nav-link" href="#experience"><i class="fas fa-briefcase me-1"></i>Experience</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#education">Education</a>
+                        <a class="nav-link" href="#education"><i class="fas fa-graduation-cap me-1"></i>Education</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact"><i class="fas fa-envelope me-1"></i>Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="themeToggle" class="btn btn-link nav-link">
+                            <i class="fas fa-moon"></i> <!-- Moon icon for dark mode -->
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -738,13 +815,13 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year in footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // Project Data (moved from React component)
+            // Project Data
             const projects = [
                 {
                     id: 'hand-gestures',
@@ -867,6 +944,33 @@
                         behavior: 'smooth'
                     });
                 });
+            });
+
+            // Theme toggle (adapted for the new dark base theme)
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+            const themeIcon = themeToggle.querySelector('.fas');
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                body.classList.add('light-mode');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                // Default to dark mode if no preference or 'dark' is saved
+                body.classList.remove('light-mode');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('light-mode');
+                if (body.classList.contains('light-mode')) {
+                    localStorage.setItem('theme', 'light');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                }
             });
         });
     </script>
