@@ -6,112 +6,230 @@
     <title>SHIVARAMAKRISHNAN D - Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts for Inter (if not already linked globally) --><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* Custom CSS for Dark Mode and Red Gradient */
+        :root {
+            /* Dark Mode Variables */
+            --dark-bg-gradient: linear-gradient(135deg, #0a0e14 0%, #3a0000 100%); /* Deep black-blue to dark red */
+            --dark-text-color: #e2e8f0; /* gray-100 */
+            --dark-section-bg: rgba(29, 34, 42, 0.7); /* Slightly transparent dark blue-gray */
+            --dark-card-bg: rgba(45, 53, 66, 0.8); /* Slightly transparent gray-800 */
+            --dark-card-border: rgba(74, 85, 104, 0.5); /* Semi-transparent gray-700 */
+            --dark-primary-color: #ef4444; /* red-500 */
+            --dark-secondary-color: #f87171; /* red-400 */
+            --dark-navbar-bg: rgba(45, 53, 66, 0.9); /* Opaque gray-800 for navbar */
+            --dark-navbar-link-color: #cbd5e0; /* gray-300 */
+            --dark-navbar-link-hover-color: #f87171; /* red-400 */
+            --dark-hero-bg: linear-gradient(to bottom right, #b91c1c, #881337); /* red-700 to rose-900 */
+            --dark-modal-bg: rgba(29, 34, 42, 0.95); /* Nearly opaque for modal */
+            --dark-footer-bg: #0d1117; /* gray-950 */
+
+            /* Light Mode Variables */
+            --light-bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e0f2f7 50%, #d1fae5 100%); /* White -> Light Blue -> Light Mint */
+            --light-text-color: #212529; /* Darker gray for better contrast */
+            --light-section-bg: rgba(255, 255, 255, 0.75); /* More opaque frosted white */
+            --light-card-bg: rgba(255, 255, 255, 0.85); /* More opaque frosted white for cards */
+            --light-card-border: rgba(222, 226, 230, 0.7); /* Light gray, semi-transparent */
+            --light-primary-color: #0052D4; /* A deeper, more professional blue */
+            --light-secondary-color: #003a9b; /* Darker blue for hover */
+            --light-navbar-bg: rgba(255, 255, 255, 0.8); /* Frosted Glass Navbar */
+            --light-navbar-link-color: #343a40; /* Dark text for links */
+            --light-navbar-link-hover-color: var(--light-primary-color); /* Blue on hover */
+            --light-hero-bg: linear-gradient(to bottom right, #0052D4, #003a9b); /* New blue gradient */
+            --light-modal-bg: rgba(255, 255, 255, 0.95); /* Nearly opaque white for modal */
+            --light-footer-bg: #343a40; /* Dark gray */
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1a202c; /* gray-900 */
-            color: #e2e8f0; /* gray-100 */
+            background: var(--dark-bg-gradient);
+            color: var(--dark-text-color);
             scroll-behavior: smooth;
+            background-attachment: fixed; /* Gradient stays fixed on scroll */
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* Dark mode specific adjustments for the toggle, though the base is already dark */
-        body.light-mode { /* This class will be toggled by the dark mode button */
-            background-color: #f8f9fa; /* Lighter background for 'light' state */
-            color: #343a40; /* Darker text for 'light' state */
+        /* Light Mode Styles */
+        body.light-mode {
+            background: var(--light-bg-gradient);
+            color: var(--light-text-color);
         }
         body.light-mode .navbar {
-            background-color: #0d6efd !important; /* Bootstrap primary blue */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-navbar-bg) !important;
+            backdrop-filter: blur(10px); /* Frosted glass navbar */
+            -webkit-backdrop-filter: blur(10px); /* Safari support */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Softer shadow */
         }
         body.light-mode .navbar-brand {
-            color: white !important;
+            color: var(--light-primary-color) !important; /* Use new primary color */
+            text-shadow: none; /* Remove dark mode text shadow */
+        }
+        body.light-mode .navbar-brand:hover {
+            background-color: rgba(0, 82, 212, 0.1);
         }
         body.light-mode .nav-link {
-            color: white !important;
+            color: var(--light-navbar-link-color) !important;
+        }
+        body.light-mode .nav-link:hover {
+            color: var(--light-navbar-link-hover-color) !important;
         }
         body.light-mode #hero {
-            background: linear-gradient(to bottom right, #0d6efd, #0b5ed7); /* Lighter gradient */
+            background: var(--light-hero-bg);
+            box-shadow: 0 8px 20px rgba(0, 82, 212, 0.25); /* Shadow matching new blue */
+            color: white; /* Hero text is always white */
         }
+        body.light-mode #hero h1 {
+            text-shadow: none;
+        }
+        body.light-mode #hero p {
+            text-shadow: none;
+        }
+
         body.light-mode section h2 {
-            color: #0d6efd; /* Bootstrap primary blue */
+            color: var(--light-primary-color);
+            text-shadow: none;
         }
+        /* Frosted Glass Effect for Light Mode Sections */
+        body.light-mode #about, 
+        body.light-mode #projects, 
+        body.light-mode #education,
+        body.light-mode #skills,
+        body.light-mode #experience {
+            background-color: var(--light-section-bg) !important;
+            backdrop-filter: blur(12px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(12px); /* Safari support */
+            border-radius: 1.5rem; /* More pronounced rounding */
+            margin: 2rem auto; /* Add margin around sections */
+            padding: 5rem 2rem; /* Adjust padding */
+            max-width: 90%; /* Max width for sections */
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1); /* Softer, colored shadow */
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Clearer border */
+        }
+        
         body.light-mode .card {
-            background-color: white;
-            color: #343a40;
-            border: 1px solid #dee2e6;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-card-bg);
+            color: var(--light-text-color);
+            border: 1px solid var(--light-card-border);
+            box-shadow: 0 5px 15px rgba(0, 82, 212, 0.08); /* Shadow matching new blue */
+        }
+        body.light-mode .card:hover {
+            box-shadow: 0 10px 25px rgba(0, 82, 212, 0.15); /* Shadow matching new blue */
         }
         body.light-mode .card-title {
-            color: #343a40;
+            color: var(--light-text-color);
         }
-        body.light-mode .card-text, body.light-mode .modal-body p {
-            color: #495057;
+        body.light-mode .card-text, 
+        body.light-mode .modal-body p {
+            color: var(--light-text-color);
         }
-        body.light-mode .card-subtitle, body.light-mode .modal-category {
-            color: #0d6efd;
+        body.light-mode .card-subtitle, 
+        body.light-mode .modal-category {
+            color: var(--light-primary-color);
         }
-        body.light-mode #skills .card, body.light-mode #experience .card {
-            background-color: #f1f3f5;
-            border: 1px solid #e9ecef;
+        body.light-mode #skills .card, 
+        body.light-mode #experience .card {
+            background-color: var(--light-card-bg);
+            border: 1px solid var(--light-card-border);
         }
-        body.light-mode #skills .card i, body.light-mode #experience .card i, body.light-mode #education .card i {
-            color: #0d6efd;
+        body.light-mode #skills .card i, 
+        body.light-mode #experience .card i, 
+        body.light-mode #education .card i {
+            color: var(--light-primary-color);
+            text-shadow: none; /* Remove dark mode glow */
         }
         body.light-mode #contact {
-            background-color: #0d6efd;
+            background-color: var(--light-primary-color);
+            box-shadow: 0 -5px 20px rgba(0, 82, 212, 0.15); /* Shadow matching new blue */
+            color: white;
+        }
+        body.light-mode #contact h2 {
+            color: white;
+            text-shadow: none;
+        }
+        body.light-mode #contact .contact-icon-group {
+            color: white;
         }
         body.light-mode #contact .contact-icon-group:hover {
-            color: #6c757d;
+            color: #e0f2f7; /* Light blue tint */
         }
+        body.light-mode #contact .contact-icon-group i {
+            text-shadow: none;
+        }
+
         body.light-mode footer {
-            background-color: #343a40;
+            background-color: var(--light-footer-bg);
+            color: white;
         }
         body.light-mode .modal-content {
-            background-color: white;
-            color: #343a40;
+            background-color: var(--light-modal-bg);
+            color: var(--light-text-color);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
         body.light-mode .modal-header .btn-close {
-            filter: none; /* Reset filter for light mode */
-            color: #343a40;
+            filter: none;
+            color: var(--light-text-color);
         }
         body.light-mode .modal-title {
-            color: #0d6efd;
+            color: var(--light-primary-color);
+            text-shadow: none;
         }
         body.light-mode .modal-body .btn-github {
-            background-color: #0d6efd;
+            background-color: var(--light-primary-color);
+            color: white;
         }
         body.light-mode .modal-body .btn-github:hover {
-            background-color: #0b5ed7;
+            background-color: var(--light-secondary-color);
         }
 
+        /* Text visibility overrides for light mode */
+        body.light-mode .text-gray-400 { color: #495057 !important; } /* Make secondary text darker */
+        body.light-mode .text-gray-200 { color: var(--light-text-color) !important; }
+        body.light-mode .list-unstyled li { color: var(--light-text-color) !important; } /* Ensure all list items are dark */
+        body.light-mode #education ul li p.font-semibold { color: #000 !important; } /* Make subheadings black */
+        body.light-mode .modal-body ul li { color: var(--light-text-color) !important; }
+        body.light-mode #experience .card p.text-sm { color: #495057 !important; }
+        body.light-mode #education ul li p.text-base { color: #495057 !important; }
+        body.light-mode #about p { color: var(--light-text-color) !important; }
+        body.light-mode #experience .card h3 { color: var(--light-text-color) !important; }
+        body.light-mode #education .card h3 { color: var(--light-text-color) !important; }
+        body.light-mode #experience ul { color: var(--light-text-color) !important; }
+        body.light-mode #education ul { color: var(--light-text-color) !important; }
+        body.light-mode #experience .card p.font-medium { color: var(--light-primary-color) !important; }
+        body.light-mode #education ul li p.font-semibold { color: var(--light-text-color) !important; font-weight: 600; }
+        body.light-mode .modal-body p { color: var(--light-text-color) !important; }
 
-        .navbar {
-            background-color: #2d3748; /* gray-800 */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Dark Mode Styles (Scoped) */
+        body:not(.light-mode) .navbar {
+            background-color: var(--dark-navbar-bg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease;
         }
 
-        .navbar-brand {
-            color: #ef4444 !important; /* red-500 */
+        body:not(.light-mode) .navbar-brand {
+            color: var(--dark-primary-color) !important;
             font-weight: bold;
             padding: 0.5rem 1rem;
             border-radius: 0.375rem;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, text-shadow 0.3s ease;
+            text-shadow: 0 0 8px rgba(239, 68, 68, 0.6); /* Red glow effect */
         }
 
-        .navbar-brand:hover {
-            background-color: #4a5568; /* gray-700 */
+        body:not(.light-mode) .navbar-brand:hover {
+            background-color: rgba(74, 85, 104, 0.3); /* gray-700 with transparency */
+            text-shadow: 0 0 15px rgba(239, 68, 68, 1); /* Stronger glow on hover */
         }
 
-        .nav-link {
-            color: #cbd5e0 !important; /* gray-300 */
+        body:not(.light-mode) .nav-link {
+            color: var(--dark-navbar-link-color) !important;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
-        .nav-link:hover {
-            color: #f87171 !important; /* red-400 */
+        body:not(.light-mode) .nav-link:hover {
+            color: var(--dark-navbar-link-hover-color) !important;
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
@@ -120,23 +238,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(to bottom right, #b91c1c, #881337); /* red-700 to rose-900 */
+            background: var(--dark-hero-bg);
             color: white;
             text-align: center;
             padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            transition: background 0.5s ease;
         }
 
-        #hero h1 {
+        body:not(.light-mode) #hero h1 {
             font-size: 3.5rem; /* sm:text-5xl lg:text-6xl */
             font-weight: 800;
             line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+            transition: text-shadow 0.3s ease;
         }
 
-        #hero p {
+        body:not(.light-mode) #hero p {
             font-size: 1.25rem; /* sm:text-xl lg:text-2xl */
             font-weight: 300;
             max-width: 48rem; /* max-w-3xl */
             margin: 0 auto;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero-buttons .btn {
@@ -144,18 +267,44 @@
             border-radius: 9999px; /* rounded-full */
             font-size: 1.125rem; /* text-lg */
             font-weight: 600;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.4), 0 4px 8px -2px rgba(0, 0, 0, 0.1); /* shadow-lg */
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .hero-buttons .btn:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            transition: all 0.5s ease-out;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: -1;
+        }
+
+        .hero-buttons .btn:hover:before {
+            transform: translate(-50%, -50%) scale(1);
         }
 
         .hero-buttons .btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 25px -5px rgba(0, 0, 0, 0.5), 0 6px 10px -2px rgba(0, 0, 0, 0.2);
         }
 
         .hero-buttons .btn-light {
             background-color: white;
             color: #b91c1c; /* red-700 */
         }
+        .hero-buttons .btn-light:hover {
+            color: #881337; /* darker red */
+        }
+
 
         .hero-buttons .btn-outline-light {
             background-color: transparent;
@@ -171,285 +320,327 @@
         /* Section Styling */
         section {
             padding: 5rem 1rem; /* py-20 px-4 */
+            background-color: transparent; /* Sections are transparent to show body gradient */
+            transition: background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+            margin: 0 auto; /* Center sections */
+            max-width: 1200px;
         }
 
-        section h2 {
+        body:not(.light-mode) section h2 {
             font-size: 2.5rem; /* text-4xl */
             font-weight: bold;
-            color: #ef4444; /* red-500 */
+            color: var(--dark-primary-color);
             margin-bottom: 3rem; /* mb-12 */
             text-align: center;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+            transition: color 0.5s ease, text-shadow 0.5s ease;
         }
 
         /* Card Styling */
-        .card {
-            background-color: #2d3748; /* gray-800 or gray-700 */
+        body:not(.light-mode) .card {
+            background-color: var(--dark-card-bg);
             border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            border: 1px solid #4a5568; /* gray-700 or gray-600 */
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.4), 0 4px 8px -2px rgba(0, 0, 0, 0.1); /* shadow-lg */
+            border: 1px solid var(--dark-card-border);
+            transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.5s ease, border-color 0.5s ease;
         }
 
         .card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* hover:shadow-xl */
+            transform: translateY(-5px); /* Lift card on hover */
+            /* Shadow handled by mode-specific selectors */
+        }
+        body:not(.light-mode) .card:hover {
+             box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.5), 0 8px 12px -5px rgba(0, 0, 0, 0.2); /* Stronger shadow */
         }
 
         .card-body {
             padding: 2rem; /* p-8 */
         }
 
-        .card-title {
+        body:not(.light-mode) .card-title {
             font-size: 1.5rem; /* text-2xl */
             font-weight: 600;
-            color: #f7fafc; /* gray-100 */
+            color: var(--dark-text-color);
+            transition: color 0.5s ease;
         }
 
-        .card-text {
-            color: #cbd5e0; /* gray-300 */
+        body:not(.light-mode) .card-text {
+            color: var(--dark-text-color);
             font-size: 1.125rem; /* text-lg */
+            transition: color 0.5s ease;
         }
 
-        .card-subtitle {
-            color: #f87171; /* red-400 */
+        body:not(.light-mode) .card-subtitle {
+            color: var(--dark-secondary-color);
             font-weight: 500;
+            transition: color 0.5s ease;
         }
 
         /* About Me specific */
-        #about .card {
-            background-color: #2d3748; /* gray-800 */
-            border: 1px solid #4a5568; /* gray-700 */
+        body:not(.light-mode) #about .card {
+            background-color: var(--dark-card-bg);
+            border: 1px solid var(--dark-card-border);
         }
-        #about p {
-            color: #e2e8f0; /* gray-200 */
+        body:not(.light-mode) #about p {
+            color: var(--dark-text-color);
             line-height: 1.625; /* leading-relaxed */
         }
 
         /* Skills specific */
-        #skills {
-            background-color: #2d3748; /* gray-800 */
+        body:not(.light-mode) #skills {
+            background-color: var(--dark-section-bg);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(74, 85, 104, 0.3);
         }
-        #skills .card {
-            background-color: #4a5568; /* gray-700 */
-            border: 1px solid #64748b; /* gray-600 */
+        body:not(.light-mode) #skills .card {
+            background-color: var(--dark-card-bg);
+            border: 1px solid var(--dark-card-border);
         }
-        #skills .card i {
+        body:not(.light-mode) #skills .card i {
             font-size: 3rem; /* 48px */
-            color: #f87171; /* red-400 */
+            color: var(--dark-secondary-color);
             margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(248, 113, 113, 0.5); /* Icon glow */
         }
-        #skills ul {
+        body:not(.light-mode) #skills ul {
             list-style: none; /* Removed default bullets */
             padding-left: 0;
         }
-        #skills li {
+        body:not(.light-mode) #skills li {
             margin-bottom: 0.5rem;
+            color: var(--dark-text-color);
         }
 
         /* Projects specific */
-        #projects {
-            background-color: #1a202c; /* gray-900 */
-        }
-        #projects .card {
-            background-color: #2d3748; /* gray-800 */
-            border: 1px solid #4a5568; /* gray-700 */
+        body:not(.light-mode) #projects .card {
+            background-color: var(--dark-card-bg);
+            border: 1px solid var(--dark-card-border);
             overflow: hidden;
             cursor: pointer;
         }
-        #projects .card img {
+        body:not(.light-mode) #projects .card img {
             width: 100%;
             height: 12rem; /* h-48 */
             object-fit: cover;
-            transition: opacity 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
-        #projects .card:hover img {
-            opacity: 0.8;
+        body:not(.light-mode) #projects .card:hover img {
+            transform: scale(1.05);
+            opacity: 0.9;
         }
-        #projects .card-body p.card-subtitle {
+        body:not(.light-mode) #projects .card-body p.card-subtitle {
             font-size: 0.875rem; /* text-sm */
             margin-bottom: 0.75rem; /* mb-3 */
         }
 
         /* Project Modal */
-        .modal-content {
-            background-color: #2d3748; /* gray-800 */
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-2xl */
+        body:not(.light-mode) .modal-content {
+            background-color: var(--dark-modal-bg);
+            border-radius: 1rem; /* Rounded-xl */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); /* Shadow-2xl */
             max-width: 48rem; /* max-w-3xl */
             max-height: 90vh;
             overflow-y: auto;
             padding: 2rem; /* p-8 */
             position: relative;
+            backdrop-filter: blur(10px); /* Frosted glass for modal */
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(74, 85, 104, 0.4); /* Subtle border */
+            transition: background-color 0.5s ease, border-color 0.5s ease;
         }
-        .modal-header {
+        body:not(.light-mode) .modal-header {
             border-bottom: none;
             padding-bottom: 0;
-            position: relative; /* For close button positioning */
+            position: relative;
         }
-        .modal-header .btn-close {
-            filter: invert(1); /* Make close button visible on dark background */
+        body:not(.light-mode) .modal-header .btn-close {
+            filter: invert(1);
             position: absolute;
             top: 1rem;
             right: 1rem;
-            font-size: 1.75rem; /* 28px */
-            color: #9e9e9e; /* gray-400 */
-            transition: color 0.3s ease;
+            font-size: 1.75rem;
+            color: #9e9e9e;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
-        .modal-header .btn-close:hover {
-            color: #f7fafc; /* gray-100 */
+        body:not(.light-mode) .modal-header .btn-close:hover {
+            color: #f7fafc;
+            transform: rotate(90deg);
         }
-        .modal-title {
-            color: #ef4444; /* red-500 */
-            font-size: 1.875rem; /* text-3xl */
+        body:not(.light-mode) .modal-title {
+            color: var(--dark-primary-color);
+            font-size: 1.875rem;
             font-weight: bold;
             margin-bottom: 1rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
         }
-        .modal-body {
+        body:not(.light-mode) .modal-body {
             padding-top: 0;
         }
-        .modal-body img {
+        body:not(.light-mode) .modal-body img {
             width: 100%;
-            height: 15rem; /* h-60 */
+            height: 15rem;
             object-fit: cover;
-            border-radius: 0.5rem; /* rounded-lg */
-            margin-bottom: 1.5rem; /* mb-6 */
+            border-radius: 0.75rem; /* rounded-lg */
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        .modal-body p {
-            color: #e2e8f0; /* gray-200 */
-            line-height: 1.625; /* leading-relaxed */
-            margin-bottom: 1.5rem; /* mb-6 */
+        body:not(.light-mode) .modal-body p {
+            color: var(--dark-text-color);
+            line-height: 1.625;
+            margin-bottom: 1.5rem;
         }
-        .modal-body ul {
+        body:not(.light-mode) .modal-body ul {
             list-style: disc;
             list-style-position: inside;
-            color: #e2e8f0; /* gray-200 */
-            font-size: 1.125rem; /* text-lg */
-            margin-bottom: 1.5rem; /* mb-6 */
-            padding-left: 0; /* Remove default padding */
+            color: var(--dark-text-color);
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            padding-left: 0;
         }
-        .modal-body ul li {
+        body:not(.light-mode) .modal-body ul li {
             margin-bottom: 0.5rem;
         }
-        .modal-body .btn-github {
+        body:not(.light-mode) .modal-body .btn-github {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem; /* space-x-2 */
+            gap: 0.5rem;
             background-color: #dc2626; /* red-600 */
             color: white;
-            padding: 0.75rem 1.5rem; /* px-6 py-3 */
-            border-radius: 9999px; /* rounded-full */
-            font-size: 1.125rem; /* text-lg */
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 1.125rem;
             font-weight: 600;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
         }
-        .modal-body .btn-github:hover {
+        body:not(.light-mode) .modal-body .btn-github:hover {
             background-color: #b91c1c; /* red-700 */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.3), 0 3px 5px -1px rgba(0, 0, 0, 0.15);
+        }
+        body:not(.light-mode) .modal-category i {
+            opacity: 0.8;
         }
 
         /* Experience & Involvement specific */
-        #experience {
-            background-color: #2d3748; /* gray-800 */
+        body:not(.light-mode) #experience {
+            background-color: var(--dark-section-bg);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(74, 85, 104, 0.3);
         }
-        #experience .card {
-            background-color: #4a5568; /* gray-700 */
-            border: 1px solid #64748b; /* gray-600 */
+        body:not(.light-mode) #experience .card {
+            background-color: var(--dark-card-bg);
+            border: 1px solid var(--dark-card-border);
         }
-        #experience .card i {
+        body:not(.light-mode) #experience .card i {
             font-size: 2rem; /* 32px */
-            color: #f87171; /* red-400 */
+            color: var(--dark-secondary-color);
             margin-right: 1rem;
             flex-shrink: 0;
+            text-shadow: 0 0 8px rgba(248, 113, 113, 0.4);
         }
-        #experience .card h3 {
-            color: #f7fafc; /* gray-100 */
+        body:not(.light-mode) #experience .card h3 {
+            color: var(--dark-text-color);
         }
-        #experience .card p.font-medium {
-            color: #f87171; /* red-400 */
+        body:not(.light-mode) #experience .card p.font-medium {
+            color: var(--dark-secondary-color);
         }
-        #experience .card p.text-sm {
+        body:not(.light-mode) #experience .card p.text-sm {
             color: #9e9e9e; /* gray-400 */
         }
-        #experience ul {
+        body:not(.light-mode) #experience ul {
             list-style: disc;
             list-style-position: inside;
-            color: #e2e8f0; /* gray-200 */
-            font-size: 1.125rem; /* text-lg */
-            padding-left: 0; /* Remove default padding */
+            color: var(--dark-text-color);
+            font-size: 1.125rem;
+            padding-left: 0;
         }
-        #experience ul li {
+        body:not(.light-mode) #experience ul li {
             margin-bottom: 0.5rem;
         }
 
         /* Education & Certifications specific */
-        #education {
-            background-color: #1a202c; /* gray-900 */
+        body:not(.light-mode) #education .card {
+            background-color: var(--dark-card-bg);
+            border: 1px solid var(--dark-card-border);
         }
-        #education .card {
-            background-color: #2d3748; /* gray-800 */
-            border: 1px solid #4a5568; /* gray-700 */
-        }
-        #education .card i {
+        body:not(.light-mode) #education .card i {
             font-size: 2rem; /* 32px */
-            color: #f87171; /* red-400 */
+            color: var(--dark-secondary-color);
             margin-right: 1rem;
             flex-shrink: 0;
+            text-shadow: 0 0 8px rgba(248, 113, 113, 0.4);
         }
-        #education .card h3 {
-            color: #f7fafc; /* gray-100 */
+        body:not(.light-mode) #education .card h3 {
+            color: var(--dark-text-color);
         }
-        #education ul {
-            list-style: none; /* Removed default bullets */
+        body:not(.light-mode) #education ul {
+            list-style: none;
             padding-left: 0;
-            color: #e2e8f0; /* gray-200 */
-            font-size: 1.125rem; /* text-lg */
+            color: var(--dark-text-color);
+            font-size: 1.125rem;
         }
-        #education ul li {
+        body:not(.light-mode) #education ul li {
             margin-bottom: 1rem;
         }
-        #education ul li p.font-semibold {
+        body:not(.light-mode) #education ul li p.font-semibold {
             font-weight: 600;
+            color: var(--dark-text-color);
         }
-        #education ul li p.text-base {
+        body:not(.light-mode) #education ul li p.text-base {
             color: #9e9e9e; /* gray-400 */
             margin-top: 0.25rem;
         }
 
         /* Contact Section */
-        #contact {
-            background-color: #991b1b; /* red-800 */
+        body:not(.light-mode) #contact {
+            background-color: var(--dark-primary-color); /* red-800 */
             color: white;
             text-align: center;
             padding: 5rem 1rem;
+            box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.5s ease;
         }
-        #contact h2 {
+        body:not(.light-mode) #contact h2 {
             color: white;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
         }
-        #contact .contact-icon-group {
+        body:not(.light-mode) #contact .contact-icon-group {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem; /* space-y-2 */
+            gap: 0.5rem;
             color: white;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.2s ease;
         }
-        #contact .contact-icon-group:hover {
+        body:not(.light-mode) #contact .contact-icon-group:hover {
             color: #fca5a5; /* red-200 */
+            transform: translateY(-5px);
         }
-        #contact .contact-icon-group i {
-            font-size: 2.5rem; /* 40px */
+        body:not(.light-mode) #contact .contact-icon-group i {
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
-        #contact .contact-icon-group span {
-            font-size: 1.125rem; /* text-lg */
+        body:not(.light-mode) #contact .contact-icon-group span {
+            font-size: 1.125rem;
             font-weight: 500;
         }
 
         /* Footer */
-        footer {
-            background-color: #0d1117; /* gray-950 */
+        body:not(.light-mode) footer {
+            background-color: var(--dark-footer-bg);
             color: white;
-            padding: 1.5rem; /* py-6 */
+            padding: 1.5rem;
             text-align: center;
-            font-size: 0.875rem; /* text-sm */
+            font-size: 0.875rem;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s ease;
         }
 
         /* Responsive adjustments for smaller screens */
@@ -498,10 +689,19 @@
                 padding: 0.6rem 1rem;
                 font-size: 1rem;
             }
+            body.light-mode #about, 
+            body.light-mode #projects, 
+            body.light-mode #education,
+            body.light-mode #skills,
+            body.light-mode #experience {
+                margin: 1rem auto;
+                padding: 3rem 1rem;
+                max-width: 95%;
+            }
         }
     </style>
 </head>
-<body>
+<body class="bg-gray-900 text-gray-100">
 
     <nav class="navbar navbar-expand-md fixed-top">
         <div class="container">
@@ -531,8 +731,7 @@
                     </li>
                     <li class="nav-item">
                         <button id="themeToggle" class="btn btn-link nav-link">
-                            <i class="fas fa-moon"></i> <!-- Moon icon for dark mode -->
-                        </button>
+                            <i class="fas fa-moon"></i> <!-- Moon icon for dark mode --></button>
                     </li>
                 </ul>
             </div>
@@ -552,7 +751,7 @@
         </div>
     </section>
 
-    <section id="about" class="bg-gray-900">
+    <!-- The bg-gray-900 class is overridden by CSS to be transparent --><section id="about" class="bg-gray-900">
         <div class="container text-center">
             <h2>About Me</h2>
             <div class="card mx-auto" style="max-width: 768px;">
@@ -568,7 +767,7 @@
         </div>
     </section>
 
-    <section id="skills" class="bg-gray-800">
+    <!-- The bg-gray-800 class is overridden by CSS to be #2d3748 --><section id="skills" class="bg-gray-800">
         <div class="container text-center">
             <h2>My Skills</h2>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -589,8 +788,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body">
-                            <i class="fas fa-chart-bar"></i>
-                            <h3 class="card-title mt-3 mb-4">Tools & Platforms</h3>
+                            <i class="fas fa-tools"></i> <!-- Changed icon --><h3 class="card-title mt-3 mb-4">Tools & Platforms</h3>
                             <ul class="list-unstyled">
                                 <li>MS Office (Word, Excel, PowerPoint)</li>
                                 <li>Power BI</li>
@@ -603,8 +801,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body">
-                            <i class="fas fa-brain"></i>
-                            <h3 class="card-title mt-3 mb-4">Soft Skills</h3>
+                            <i class="fas fa-users"></i> <!-- Changed icon --><h3 class="card-title mt-3 mb-4">Soft Skills</h3>
                             <ul class="list-unstyled">
                                 <li>Problem-Solving</li>
                                 <li>Teamwork & Collaboration</li>
@@ -618,15 +815,15 @@
         </div>
     </section>
 
-    <section id="projects" class="bg-gray-900">
+    <!-- The bg-gray-900 class is overridden by CSS to be transparent --><section id="projects" class="bg-gray-900">
         <div class="container text-center">
             <h2>My Projects</h2>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="project-cards-container">
-                </div>
+                <!-- Project cards will be injected here by JavaScript --></div>
         </div>
     </section>
 
-    <div class="modal fade" id="projectDetailModal" tabindex="-1" aria-labelledby="projectDetailModalLabel" aria-hidden="true">
+    <!-- Project Modal --><div class="modal fade" id="projectDetailModal" tabindex="-1" aria-labelledby="projectDetailModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -634,7 +831,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p class="modal-category text-red-400 text-sm font-medium mb-2"></p>
+                    <!-- Icon will be injected here by JavaScript --><p class="modal-category text-red-400 text-sm font-medium mb-2"></p>
                     <p class="modal-dates text-gray-400 text-sm mb-4"></p>
                     <img id="modal-project-image" src="" alt="Project Image" class="img-fluid rounded-lg mb-4">
                     <p id="modal-project-description" class="text-gray-200 leading-relaxed mb-4"></p>
@@ -647,7 +844,7 @@
         </div>
     </div>
 
-    <section id="experience" class="bg-gray-800">
+    <!-- The bg-gray-800 class is overridden by CSS to be #2d3748 --><section id="experience" class="bg-gray-800">
         <div class="container">
             <h2>Experience & Involvement</h2>
 
@@ -732,7 +929,7 @@
         </div>
     </section>
 
-    <section id="education" class="bg-gray-900">
+    <!-- The bg-gray-900 class is overridden by CSS to be transparent --><section id="education" class="bg-gray-900">
         <div class="container">
             <h2>Education & Certifications</h2>
 
@@ -827,6 +1024,7 @@
                     id: 'hand-gestures',
                     title: 'Hand Gestures to Control Computer Volume and Cursor',
                     category: 'Computer Vision',
+                    icon: 'fas fa-eye', // Added icon
                     dates: 'December 2023 - February 2024',
                     description: 'Developed a computer vision system using OpenCV and MediaPipe to detect and track hand gestures, enabling touch-free control of system volume and cursor using real-time webcam input.',
                     details: [
@@ -841,6 +1039,8 @@
                     id: 'resume-screening-ai',
                     title: 'Resume Screening AI System',
                     category: 'NLP, Web App',
+                    icon: 'fas fa-robot', // Added icon
+                    dates: 'April 2024 - June 2024',
                     description: 'Developed a web-based application using Streamlit and Natural Language Processing (NLP) techniques to automate resume screening.',
                     details: [
                         'Used Python libraries like spaCy and scikit-learn for text extraction and similarity analysis.',
@@ -854,26 +1054,30 @@
                     id: 'student-performance',
                     title: 'Student Performance Analysis and Prediction',
                     category: 'Data Analysis, Machine Learning',
+                    icon: 'fas fa-chart-pie', // Added icon
+                    dates: 'March 2024 - April 2024',
                     description: 'Analyzed educational data to understand key factors influencing student success and built predictive models.',
                     details: [
                         'Performed Exploratory Data Analysis (EDA) using pandas and seaborn to identify key trends and correlations.',
                         'Applied classification models like Logistic Regression and Decision Trees to predict student outcomes.',
                         'Delivered actionable insights to improve academic performance and decision-making for educators.'
                     ],
-                    github: 'https://github.co/shiva0042/student-performance-prediction',
+                    github: 'https://github.com/shiva0042/student-performance-prediction',
                     image: 'https://placehold.co/400x250/BFDBFE/3B82F6?text=Student+Perf'
                 },
                 {
                     id: 'titanic-survival',
                     title: 'Titanic Survival Prediction',
                     category: 'Machine Learning',
+                    icon: 'fas fa-brain', // Added icon
+                    dates: 'February 2024 - March 2024',
                     description: 'Developed a machine learning model using the Titanic dataset to predict passenger survival.',
                     details: [
                         'Executed comprehensive data preprocessing, including handling missing values and feature engineering.',
                         'Trained and evaluated models using scikit-learn, achieving 80% accuracy with Logistic Regression and Random Forest models.',
                         'Demonstrated proficiency in classical machine learning workflows and model evaluation techniques.'
                     ],
-                    github: 'https://github.com/shiva0042/titanic-survival-prediction',
+                    github: 'httpsS://github.com/shiva0042/titanic-survival-prediction',
                     image: 'https://placehold.co/400x250/D1FAE5/059669?text=Titanic+Pred'
                 }
             ];
@@ -894,12 +1098,15 @@
                 projects.forEach(project => {
                     const colDiv = document.createElement('div');
                     colDiv.className = 'col';
+                    // Added project icon to the card subtitle
                     colDiv.innerHTML = `
                         <div class="card h-100" data-project-id="${project.id}">
                             <img src="${project.image}" class="card-img-top" alt="${project.title}" onerror="this.onerror=null;this.src='https://placehold.co/400x250/374151/D1D5DB?text=Project+Image';">
                             <div class="card-body">
                                 <h3 class="card-title">${project.title}</h3>
-                                <p class="card-subtitle mb-1">${project.category}</p>
+                                <p class="card-subtitle mb-1">
+                                    <i class="${project.icon} me-2"></i>${project.category}
+                                </p>
                                 <p class="card-text">${project.description}</p>
                             </div>
                         </div>
@@ -916,7 +1123,8 @@
                 const project = projects.find(p => p.id === projectId);
                 if (project) {
                     modalTitle.textContent = project.title;
-                    modalCategory.textContent = project.category;
+                    // Added project icon to the modal category
+                    modalCategory.innerHTML = `<i class="${project.icon} me-2"></i>${project.category}`;
                     modalDates.textContent = project.dates || ''; // Set dates or empty string
                     modalImage.src = project.image;
                     modalImage.alt = project.title;
@@ -937,12 +1145,28 @@
             renderProjectCards(); // Initial render of project cards
 
             // Smooth scrolling for navigation links
-            document.querySelectorAll('.navbar-nav .nav-link').forEach(anchor => {
+            document.querySelectorAll('.navbar-nav .nav-link, .hero-buttons .btn-light').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
+                    // Check if the link is the theme toggle
+                    if (this.id === 'themeToggle' || this.getAttribute('target') === '_blank') {
+                        return;
+                    }
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close the navbar collapse on mobile after clicking a link
+                        const navbarCollapse = document.getElementById('navbarNav');
+                        if (navbarCollapse.classList.contains('show')) {
+                            bootstrap.Collapse.getOrCreateInstance(navbarCollapse).hide();
+                        }
+                    }
                 });
             });
 
@@ -976,3 +1200,4 @@
     </script>
 </body>
 </html>
+
