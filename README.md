@@ -263,7 +263,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Shivaramakrishnan D**
 - GitHub: [@shiva0042](https://github.com/shiva0042)
-- LinkedIn: [shiva0042](https://www.linkedin.com/in/shiva0042)
+- LinkedIn: [shiva0042](https://www.linkedin.com/in/-shiva-rama/)
 - Email: shiva20048@gmail.com
 
 ## 🙏 Acknowledgments
