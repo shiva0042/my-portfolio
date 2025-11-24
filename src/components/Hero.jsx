@@ -12,7 +12,6 @@ const Hero = () => {
         { icon: FaInstagram, href: 'https://www.instagram.com/__.s_r_k.___', label: 'Instagram', color: 'hover:text-pink-400' },
     ];
 
-    // Floating particles background
     const particles = Array.from({ length: 20 }, (_, i) => ({
         id: i,
         size: Math.random() * 4 + 2,
@@ -24,41 +23,31 @@ const Hero = () => {
 
     return (
         <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Animated Background Particles */}
+            {/* Particles */}
             <div className="absolute inset-0 overflow-hidden">
-                {particles.map((particle) => (
+                {particles.map(particle => (
                     <motion.div
                         key={particle.id}
                         className="absolute rounded-full bg-gradient-to-r from-primary-500/20 to-accent-500/20 blur-sm"
-                        style={{
-                            width: particle.size,
-                            height: particle.size,
-                            left: `${particle.x}%`,
-                            top: `${particle.y}%`,
-                        }}
+                        style={{ width: particle.size, height: particle.size, left: `${particle.x}%`, top: `${particle.y}%` }}
                         animate={{
                             y: [0, -30, 0],
                             x: [0, 15, -15, 0],
                             scale: [1, 1.2, 1],
                             opacity: [0.3, 0.6, 0.3],
                         }}
-                        transition={{
-                            duration: particle.duration,
-                            delay: particle.delay,
-                            repeat: Infinity,
-                            ease: 'easeInOut',
-                        }}
+                        transition={{ duration: particle.duration, delay: particle.delay, repeat: Infinity, ease: 'easeInOut' }}
                     />
                 ))}
             </div>
 
             {/* Gradient Orbs */}
-            <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/30 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/30 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
-                    {/* Text Content */}
+                    {/* Text */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
@@ -112,18 +101,13 @@ const Hero = () => {
                             Passionate about transforming data into actionable insights and making data-driven decisions.
                         </motion.p>
 
-                        {/* CTA Button */}
+                        {/* CTA */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1 }}
                         >
-                            <Link
-                                to="about"
-                                smooth={true}
-                                duration={500}
-                                offset={-80}
-                            >
+                            <Link to="about" smooth={true} duration={500} offset={-80}>
                                 <button className="btn-primary group">
                                     <span className="flex items-center gap-2">
                                         About Me
@@ -140,7 +124,7 @@ const Hero = () => {
                             transition={{ delay: 1.2 }}
                             className="flex gap-4 pt-4"
                         >
-                            {socialLinks.map((social, index) => (
+                            {socialLinks.map((social, idx) => (
                                 <motion.a
                                     key={social.label}
                                     href={social.href}
@@ -151,7 +135,7 @@ const Hero = () => {
                                     whileTap={{ scale: 0.9 }}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 1.2 + index * 0.1 }}
+                                    transition={{ delay: 1.2 + idx * 0.1 }}
                                     className={`text-3xl text-gray-400 ${social.color} transition-colors duration-300`}
                                 >
                                     <social.icon />
@@ -168,50 +152,48 @@ const Hero = () => {
                         className="relative flex justify-center items-center"
                     >
                         <motion.div
-                            animate={{
-                                rotate: 360,
-                            }}
-                            transition={{
-                                duration: 20,
-                                repeat: Infinity,
-                                ease: 'linear',
-                            }}
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
                             className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 blur-2xl opacity-50"
-                        ></motion.div>
+                        />
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+                            className="absolute inset-0 border-2 border-primary-500/30 rounded-full"
+                            style={{ transform: 'scale(1.1)' }}
+                        />
+                        <motion.div
+                            animate={{ rotate: -360 }}
+                            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                            className="absolute inset-0 border-2 border-accent-500/30 rounded-full"
+                            style={{ transform: 'scale(1.2)' }}
+                        />
+                        <img
+                            src={`${import.meta.env.BASE_URL}assets/images/logo.jpg`}
+                            alt="Shivaramakrishnan D"
+                            className="relative rounded-full w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover border-4 border-slate-800 shadow-2xl"
+                        />
+                    </motion.div>
+                </div>
+            </div>
 
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                        className="absolute inset-0 border-2 border-primary-500/30 rounded-full"
-                        style={{ transform: 'scale(1.1)' }}
-                            ></motion.div>
-                    <motion.div
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                        className="absolute inset-0 border-2 border-accent-500/30 rounded-full"
-                        style={{ transform: 'scale(1.2)' }}
-                    ></motion.div>
+            {/* Scroll Indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2 }}
+                className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+            >
+                <motion.div
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="text-gray-400 text-sm flex flex-col items-center gap-2"
+                >
+                    <span>Scroll Down</span>
+                    <FaArrowDown className="text-primary-400" />
                 </motion.div>
             </motion.div>
-        </div>
-            </div >
-
-    {/* Scroll Indicator */ }
-    < motion.div
-initial = {{ opacity: 0 }}
-animate = {{ opacity: 1 }}
-transition = {{ delay: 2 }}
-className = "absolute bottom-10 left-1/2 transform -translate-x-1/2"
-    >
-    <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-        className="text-gray-400 text-sm flex flex-col items-center gap-2"
-    >
-        <span>Scroll Down</span>
-        <FaArrowDown className="text-primary-400" />
-    </motion.div>
-            </motion.div >
-        </section >
+        </section>
     );
 };
 
