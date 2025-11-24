@@ -15,7 +15,7 @@ const Education = () => {
             location: 'Trichy',
             period: '2024-2026',
             percentage: 'Current Percentage - 75.64%',
-            image: '/assets/images/educat/pg.jpg',
+            image: `${import.meta.env.BASE_URL}assets/images/educat/pg.jpg`,
         },
         {
             degree: 'Bachelor of Computer Science',
@@ -23,7 +23,7 @@ const Education = () => {
             location: 'Trichy',
             period: '2021-2024 | Completed',
             percentage: 'Percentage - 72.65%',
-            image: '/assets/images/educat/ug.png',
+            image: `${import.meta.env.BASE_URL}assets/images/educat/ug.png`,
         },
         {
             degree: 'HSC Science | Computer Science',
@@ -31,7 +31,7 @@ const Education = () => {
             location: 'Trichy',
             period: '2020-2021 | Completed',
             percentage: 'Percentage - 89.35%',
-            image: '/assets/images/educat/school (2).jpg',
+            image: `${import.meta.env.BASE_URL}assets/images/educat/school%20(2).jpg`,
         },
     ];
 

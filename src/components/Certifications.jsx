@@ -15,7 +15,7 @@ const Certifications = () => {
         {
             id: 1,
             title: 'Marcello Tech In Backend Development',
-            image: '/assets/images/certifications/certificate (1).jpeg',
+            image: `${import.meta.env.BASE_URL}assets/images/certifications/certificate%20(1).jpeg`,
             description: [
                 'Completed a 5-day intensive internship focused on Backend Development.',
                 'Gained hands-on experience in real-world backend concepts and practical implementation.',
@@ -25,7 +25,7 @@ const Certifications = () => {
         {
             id: 2,
             title: 'Research Paper Writing Tools (LaTeX & Overleaf) CBIT, Hyderabad',
-            image: '/assets/images/certifications/certificate (2).jpeg',
+            image: `${import.meta.env.BASE_URL}assets/images/certifications/certificate%20(2).jpeg`,
             description: [
                 'Participated in a national-level workshop on professional research paper writing.',
                 'Learnt LaTeX and Overleaf for academic documentation and publication-quality formatting.',
@@ -35,7 +35,7 @@ const Certifications = () => {
         {
             id: 3,
             title: 'Introduction to Cloud Computing – IBM (Coursera)',
-            image: '/assets/images/certifications/certificate (3).jpeg',
+            image: `${import.meta.env.BASE_URL}assets/images/certifications/certificate%20(3).jpeg`,
             description: [
                 'Completed IBM\'s foundational course on Cloud Computing concepts and architecture.',
                 'Covered cloud models, deployment techniques, and real-world applications.',
@@ -45,7 +45,7 @@ const Certifications = () => {
         {
             id: 4,
             title: 'PowerBI Workshop',
-            image: '/assets/images/certifications/certificate(6).png',
+            image: `${import.meta.env.BASE_URL}assets/images/certifications/certificate(6).png`,
             description: [
                 'AI-powered interactive dashboards',
                 'Real-time analytics & insights',
@@ -55,7 +55,7 @@ const Certifications = () => {
         {
             id: 5,
             title: 'Data Analytics Job Simulation Deloitte (Forage)',
-            image: '/assets/images/certifications/certificate (4).png',
+            image: `${import.meta.env.BASE_URL}assets/images/certifications/certificate%20(4).png`,
             description: [
                 'Finished Deloitte\'s virtual job simulation focused on Data Analytics and Forensic Technology.',
                 'Completed tasks involving data cleaning, insight generation, and real-case analysis.',
@@ -65,7 +65,7 @@ const Certifications = () => {
         {
             id: 6,
             title: 'SQL for Data Science LinkedIn Learning',
-            image: '/assets/images/certifications/certificate (5).png',
+            image: `${import.meta.env.BASE_URL}assets/images/certifications/certificate%20(5).png`,
             description: [
                 'Completed a hands-on SQL Data Science program with practical coding exercises.',
                 'Developed strong skills in querying, data manipulation, and analytical SQL operations.',
