@@ -179,52 +179,39 @@ const Hero = () => {
                             className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500 blur-2xl opacity-50"
                         ></motion.div>
 
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96"
-                        >
-                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 animate-pulse"></div>
-                            <img
-                                src="/assets/images/logo.jpg"
-                                alt="Shivaramakrishnan D"
-                                className="relative rounded-full w-full h-full object-cover border-4 border-slate-800 shadow-2xl"
-                            />
-
-                            {/* Floating rings */}
-                            <motion.div
-                                animate={{ rotate: 360 }}
-                                transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-                                className="absolute inset-0 border-2 border-primary-500/30 rounded-full"
-                                style={{ transform: 'scale(1.1)' }}
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+                        className="absolute inset-0 border-2 border-primary-500/30 rounded-full"
+                        style={{ transform: 'scale(1.1)' }}
                             ></motion.div>
-                            <motion.div
-                                animate={{ rotate: -360 }}
-                                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                                className="absolute inset-0 border-2 border-accent-500/30 rounded-full"
-                                style={{ transform: 'scale(1.2)' }}
-                            ></motion.div>
-                        </motion.div>
-                    </motion.div>
-                </div>
-            </div>
-
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2 }}
-                className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-            >
-                <motion.div
-                    animate={{ y: [0, 10, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                    className="text-gray-400 text-sm flex flex-col items-center gap-2"
-                >
-                    <span>Scroll Down</span>
-                    <FaArrowDown className="text-primary-400" />
+                    <motion.div
+                        animate={{ rotate: -360 }}
+                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                        className="absolute inset-0 border-2 border-accent-500/30 rounded-full"
+                        style={{ transform: 'scale(1.2)' }}
+                    ></motion.div>
                 </motion.div>
             </motion.div>
-        </section>
+        </div>
+            </div >
+
+    {/* Scroll Indicator */ }
+    < motion.div
+initial = {{ opacity: 0 }}
+animate = {{ opacity: 1 }}
+transition = {{ delay: 2 }}
+className = "absolute bottom-10 left-1/2 transform -translate-x-1/2"
+    >
+    <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+        className="text-gray-400 text-sm flex flex-col items-center gap-2"
+    >
+        <span>Scroll Down</span>
+        <FaArrowDown className="text-primary-400" />
+    </motion.div>
+            </motion.div >
+        </section >
     );
 };
 
