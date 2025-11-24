@@ -58,7 +58,7 @@ const About = () => {
 
                             <div className="relative">
                                 <img
-                                    src="/assets/images/profiletop.jpg"
+                                    src={`${import.meta.env.BASE_URL}assets/images/profiletop.jpg`}
                                     alt="SRK Profile"
                                     className="relative rounded-2xl w-full h-auto object-cover shadow-2xl border-2 border-slate-700"
                                 />

@@ -9,7 +9,7 @@ const Hero = () => {
         { icon: FaLinkedin, href: 'https://www.linkedin.com/in/-shiva-rama', label: 'LinkedIn', color: 'hover:text-blue-400' },
         { icon: FaGithub, href: 'https://github.com/shiva0042', label: 'GitHub', color: 'hover:text-purple-400' },
         { icon: FaWhatsapp, href: 'https://wa.me/918610874606', label: 'WhatsApp', color: 'hover:text-green-400' },
-        { icon: FaInstagram, href: 'https://www.instagram.com/__.s_r_k.___', label: 'Instagram', color: 'hover:text-pink-400' },
+        { icon: FaInstagram, href: 'https://www.instagram.com/__.s_r_k.__/', label: 'Instagram', color: 'hover:text-pink-400' },
     ];
 
     const particles = Array.from({ length: 20 }, (_, i) => ({
