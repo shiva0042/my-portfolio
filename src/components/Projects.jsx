@@ -31,6 +31,17 @@ const Projects = () => {
             github: 'https://github.com/shiva0042/hand-gesture',
         },
         {
+            type: 'project',
+            title: 'NEST - Near Easy Shop Tracker',
+            description: [
+                'A Flutter-based grocery discovery and shopping application that helps users find nearby grocery stores and manage their shopping experience.',
+                'Features include interactive map discovery, detailed shop information, product catalog browsing, shopping cart management, and integrated billing system.',
+                'Implemented with Google Maps integration for location services and comprehensive inventory management for shop owners.',
+            ],
+            tools: ['Flutter', 'Google Maps API', 'Provider/Riverpod', 'Geolocator', 'Dart'],
+            github: 'https://github.com/shiva0042/NEST',
+        },
+        {
             type: 'involvement',
             title: 'Joint Vice President',
             organization: 'Bishop Heber College Department of Computer Science',
